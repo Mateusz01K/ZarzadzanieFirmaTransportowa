@@ -1,0 +1,44 @@
+﻿@model ZarzadzanieFirmaTransportowa.Models.Cars.CarViewModel
+
+@{
+    ViewData["Title"] = "Lista samochodów";
+}
+<div class="text-center">
+    <h1 class="display-4">Lista samochodów</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Model</th>
+                <th scope="col">Typ</th>
+                <th scope="col">Moc</th>
+                <th scope="col">Przejechane kilometry</th>
+                <th scope="col">Rok produkcji</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Car)
+            {
+                <tr>
+                    <td scope="row">@item.Id</td>
+                    <td scope="row">@item.Model</td>
+                    <td scope="row">@item.Brand</td>
+                    <td scope="row">@item.Power</td>
+                    <td scope="row">@item.Power</td>
+                    <td scope="row">@item.YearOfProduction</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<form method="delete" asp-asp-controller="Car" asp-action="DeleteThisCar">
+    <div>
+        <label for="Id">Id samochodu do usunięcia: <span style="color:red">*</span></label>
+        <input type="text" class="form-control" id="Id" placeholder="ID samochodu" name="Id"/>
+
+        <div class="text-center m-5">
+            <button type="submit" class="btn btn-danger">Usuń</button>
+            <a class="btn btn-outline-danger" href="javascript: history.go(-1)">Wróć</a>
+        </div>
+    </div>
+</form>

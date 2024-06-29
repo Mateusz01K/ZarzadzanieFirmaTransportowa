@@ -1,0 +1,43 @@
+﻿@model ZarzadzanieFirmaTransportowa.Models.Users.UserViewModel
+
+@{
+    ViewData["Title"] = "Lista samochodów";
+}
+@if (TempData["message"] != null)
+{
+    <script>
+        alert('@TempData["message"]');
+    </script>
+}
+<div class="text-center">
+    <h1 class="display-4">Lista samochodów</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Model</th>
+                <th scope="col">Typ</th>
+                <th scope="col">Moc</th>
+                <th scope="col">Przejechane kilometry</th>
+                <th scope="col">Rok produkcji</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Users)
+            {
+                <tr>
+                    <td scope="row">@item.Id</td>
+                    <td scope="row">@item.Name</td>
+                    <td scope="row">@item.LastName</td>
+                    <td scope="row">@item.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-center m-5">
+        <a class="btn btn-outline-success" asp-area="" asp-controller="Car" asp-action="InsertNewCar" role="button">Dodaj nowy samochód</a>
+        <a class="btn btn-outline-warning" asp-area="" asp-controller="Car" asp-action="UpdateCar" role="button">Edytuj samochód</a>
+        <a class="btn btn-outline-danger" asp-area="" asp-controller="Car" asp-action="DeleteCar" role="button">Usuń samochód</a>
+    </div>
+</div>
